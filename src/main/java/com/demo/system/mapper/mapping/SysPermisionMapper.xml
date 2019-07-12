@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--
+   Copyright© 2003-2016 浙江汇信科技有限公司, All Rights Reserved.
+  -->
+<mapper namespace="com.demo.system.mapper.SysPermisionMapper">
+    <resultMap id="BaseResultMap" type="com.demo.system.model.SysPermision">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="PERMISION_NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="PERMISION_PARENT_ID" property="parentId" jdbcType="VARCHAR"/>
+        <result column="PERMISION_TYPE" property="type" jdbcType="VARCHAR"/>
+        <result column="PERMISION_SORT" property="sort" jdbcType="INTEGER"/>
+        <result column="PERMISION_URL" property="url" jdbcType="VARCHAR"/>
+        <result column="PERMISION_RELATED_URL" property="relatedUrl" jdbcType="VARCHAR"/>
+        <result column="PERMISION_DESC" property="desc" jdbcType="VARCHAR"/>
+        <result column="PERMISION_STATE" property="state" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询用户权限-->
+    <select id="selectUserPermisions" resultMap="BaseResultMap" parameterType="Map">
+        SELECT DISTINCT
+        SYS_PERMISION.ID,PERMISION_NAME,PERMISION_PARENT_ID,PERMISION_TYPE,PERMISION_SORT,PERMISION_URL,PERMISION_RELATED_URL,PERMISION_DESC,PERMISION_STATE
+        FROM
+        SYS_USER_ROLE,
+        SYS_ROLE_PERMISION,
+        SYS_PERMISION
+        WHERE
+        UR_ROLE_ID = RP_ROLE_ID
+        AND RP_PERMISION_ID = SYS_PERMISION.ID
+        AND UR_USER_ID = #{userId,jdbcType=VARCHAR}
+        ORDER BY PERMISION_SORT ASC
+    </select>
+</mapper>

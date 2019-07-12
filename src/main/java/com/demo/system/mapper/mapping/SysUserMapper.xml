@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+   Copyright© 2003-2016 浙江汇信科技有限公司, All Rights Reserved.
+  -->
+<mapper namespace="com.demo.system.mapper.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.demo.system.model.SysUser">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="USER_USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="USER_PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="USER_PASSWORD_SALT" jdbcType="VARCHAR" property="passwordSalt" />
+    <result column="USER_IDENTITY" jdbcType="VARCHAR" property="identity" />
+    <result column="USER_REAL_NAME" jdbcType="VARCHAR" property="realName" />
+    <result column="USER_EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="USER_CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="USER_LAST_LOGIN_TIME" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="USER_STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="USER_DESC" jdbcType="VARCHAR" property="desc" />
+  </resultMap>
+</mapper>
